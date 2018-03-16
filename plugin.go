@@ -23,7 +23,7 @@ func (ctx Concat) ServeHTTP(w http.ResponseWriter, r *http.Request) (int, error)
 		files := strings.Split(chunk[1], ",")
 		for _, file := range files {
 			u := url.URL{
-				Path:   path.Join(chunk[0], file),
+				Path:   path.Join(chunk[0], strings.Split(file, "?")[0]),
 				Host:   r.Host,
 				Scheme: "http",
 			}
